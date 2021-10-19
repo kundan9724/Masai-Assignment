@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marks Dom</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="">Student Name</label>
+      <input type="text" name="" id="name" />
+      <br />
+      <br />
+      <label for=""> Age </label>
+      <input type="number" id="age" />
+      <br />
+      <br />
+      <label for=""> Science Marks </label>
+      <input type="number" id="scmarks" />
+      <br />
+      <br />
+      <label for=""> English Marks </label>
+      <input type="number" id="engmarks" />
+      <br />
+      <br />
+      <label for=""> Mathematics Marks </label>
+      <input type="number" id="mathmarks" />
+      <br />
+      <br />
+    </form>
+    <button id="submit">submit</button>
+
+    <!-- on submit you should create tabular data of all the information
+and also display total marks of the student
+each row must also have a button to delete that particular row -->
+    <div id="showData">
+      <table border="1" id="tab">
+        <tr>
+          <td>Student Name</td>
+          <td>Age</td>
+          <td>Science Marks</td>
+          <td>English marks</td>
+          <td>Science marks</td>
+          <td>Action</td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      var nme = document.getElementById("name");
+      var age = document.getElementById("age");
+      var sc = document.getElementById("scmarks");
+      var eng = document.getElementById("engmarks");
+      var math = document.getElementById("mathmarks");
+      var btn = document.getElementById("submit");
+      var tab1 = document.getElementById("tab");
+      var arr = [];
+      btn.addEventListener("click", addData);
+
+      function addData() {
+        var row = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+        var td5 = document.createElement("td");
+        var td6 = document.createElement("td");
+        td6.textContent = "delete";
+        td6.style.color = "red";
+
+        td6.addEventListener("click", remove);
+        td1.textContent = nme.value;
+        row.appendChild(td1);
+        td2.textContent = age.value;
+        row.appendChild(td2);
+        td3.textContent = eng.value;
+        row.appendChild(td3);
+        td4.textContent = sc.value;
+        row.appendChild(td4);
+        td5.textContent = math.value;
+        row.appendChild(td5);
+        tab1.appendChild(row);
+        row.appendChild(td6);
+        var marks = Number(sc.value) + Number(math.value) + Number(eng.value);
+        arr.push(marks);
+      }
+      function totalMarks(arr) {
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+          sum = sum + arr[i];
+        }
+        var head = document.createElement("h2");
+        var parent = document.getElementById("showData");
+        head.textContent = "Total MArks " + sum;
+        parent.appendChild(head);
+      }
+      function remove(e) {
+        var parent = e.target.parentNode;
+        parent.remove();
+      }
+      //   document.body.appendChild(tab);
+    </script>
+  </body>
+</html>
+<!-- take student name
+age
+science marks
+english marks
+mathematics marks -->

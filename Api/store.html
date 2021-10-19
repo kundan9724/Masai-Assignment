@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        height: 100px;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      let data = [];
+
+      function loadProduct() {
+        return fetch("https://fakestoreapi.com/products")
+          .then(function (response) {
+            return response.json();
+          })
+          .catch(function (error) {});
+      }
+
+      function createProductCards(data) {
+        const container = document.getElementById("container");
+        container.innerHTML = "";
+        const div = document.createElement("div");
+        for (let userData of data) {
+          const card = createCard(userData);
+          div.append(card);
+        }
+        container.append(div);
+      }
+      function createCard(userData) {
+        const div = document.createElement("div");
+        div.className = "card-container";
+        const img = document.createElement("img");
+        img.src = userData.image;
+
+        const right = document.createElement("div");
+        const h3 = document.createElement("h3");
+        h3.textContent = `${userData.description}`;
+        const price = document.createElement("div");
+        price.textContent = `Price: ${userData.price}`;
+        right.append(img, h3, price);
+        div.append(img, right);
+        return div;
+      }
+      loadProduct().then(function (response) {
+        console.log(response);
+        createProductCards(response);
+      });
+    </script>
+  </body>
+</html>

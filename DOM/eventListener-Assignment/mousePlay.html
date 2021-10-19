@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Play</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+      }
+      #container {
+        background-color: rgb(76, 155, 216);
+        width: 50%;
+        height: 400px;
+        margin: auto;
+      }
+      #submit {
+        width: 150px;
+        height: 100px;
+        font-size: 30px;
+        border-radius: 3%;
+        margin-left: 300px;
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <button id="submit">Submit</button>
+    </div>
+    <script>
+      var box = document.getElementById("container");
+      var but = document.getElementById("submit");
+      console.log(box.innerHTML);
+
+      function enterBox() {
+        submit.style.background = "brown";
+      }
+      function leaveBox() {
+        submit.style.background = "green";
+      }
+      box.addEventListener("mouseover", enterBox);
+      box.addEventListener("mouseleave", leaveBox);
+    </script>
+  </body>
+</html>

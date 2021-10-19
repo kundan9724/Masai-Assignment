@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube App</title>
+    <style>
+      #videos {
+        width: 1300px;
+        margin: auto;
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 400px 400px 400px;
+        gap: 40px;
+      }
+      #videos > div {
+        margin-left: 40px;
+      }
+      #query {
+        width: 500px;
+        height: 30px;
+        font-size: 20px;
+        margin-left: 300px;
+        margin-top: 10px;
+      }
+      img {
+        height: 30px;
+        width: 50px;
+      }
+      #search {
+        background-color: white;
+        height: 38px;
+        margin-top: 10px;
+        border: 2px solid grey;
+        padding: 3px;
+        cursor: pointer;
+      }
+      #icon {
+        height: 60px;
+        width: 100px;
+      }
+      #youTubeIcon {
+        margin-top: 40px;
+      }
+      #heading {
+        display: grid;
+        grid-template-columns: 200px 1000px;
+      }
+      #searchBar {
+        display: grid;
+        grid-template-columns: 808px 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="heading">
+      <div id="youtubeIcon">
+        <img
+          id="icon"
+          src="https://www.vippng.com/png/detail/360-3605194_youtube-app-logo-png.png"
+          alt=""
+        />
+      </div>
+      <div id="searchBar">
+        <input type="text" name="" id="query" placeholder="Search" />
+        <button id="search" onclick="searchVideos()">
+          <img
+            src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698956-icon-111-search-512.png"
+            alt=""
+          />
+        </button>
+      </div>
+    </div>
+    <div id="videos"></div>
+    <script>
+      let videos = document.getElementById("videos");
+      async function searchVideos() {
+        videos.innerHTML = "";
+        let q = document.getElementById("query").value;
+        let res = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?q=${q}&id=7lCDEYXw3mM&key=AIzaSyBlg9Iis3zqHktuWeXkUz_-RK_YHcKvkzo&maxResults=20`
+        );
+        let data = await res.json();
+        // console.log("data:", data);
+        document.getElementById("query").value = "";
+        let { items } = data;
+
+        items = items.filter((el) => {
+          return el.id.videoId != undefined;
+        });
+
+        items.forEach(({ id: { videoId } }) => {
+          const div = document.createElement("div");
+          div.innerHTML = `<iframe width="400" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+          videos.append(div);
+        });
+      }
+    </script>
+  </body>
+</html>

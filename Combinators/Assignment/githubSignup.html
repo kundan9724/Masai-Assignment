@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Github</title>
+    <style>
+      h1 {
+        color: white;
+        text-align: center;
+        font-family: cursive;
+        font-size: 25px;
+      }
+      h1 + h1 {
+        margin-top: -25px;
+        padding: 0px;
+      }
+      #box {
+        width: 1512px;
+        height: 450px;
+        background-color: rgb(35, 40, 46);
+        margin: auto;
+        margin-top: 30px;
+      }
+      #box > div + h1 {
+        padding-top: 50px;
+      }
+
+      #clear {
+        clear: both;
+      }
+      p {
+        font-size: 13px;
+        float: left;
+        margin: auto;
+      }
+      #clear + p + p,
+      #clear + p + p + p + p {
+        color: white;
+      }
+      #clear + p {
+        margin-left: 400px;
+      }
+      #clear ~ p {
+        margin-top: 20px;
+        font-family: cursive;
+      }
+      #form {
+        width: 1500px;
+        height: 90px;
+        color: white;
+        margin: auto;
+        margin-top: 80px;
+      }
+
+      #form > div > input {
+        width: 250px;
+        height: 30px;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 8px;
+      }
+      #form > p + div {
+        height: 50px;
+        width: 200px;
+        margin-left: 200px;
+        height: 50px;
+        float: left;
+      }
+      #form > p + div + div,
+      #form > p + div + div + div {
+        height: 50px;
+        width: 200px;
+        margin-left: 100px;
+        height: 50px;
+        float: left;
+      }
+      #submit {
+        height: 48px;
+        width: 242px;
+        background-color: rgb(0, 208, 86);
+        color: white;
+        margin-left: 100px;
+        float: left;
+        margin-top: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div></div>
+      <h1>Get started for free-join the millions of developers already</h1>
+      <h1>using GitHub to share their code ,work together,and build</h1>
+      <h1>amazing things.</h1>
+
+      <div id="form">
+        <p></p>
+        <div>
+          <label for="username">Username</label>
+          <br />
+          <input type="text" placeholder="Pick a Username" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <br />
+          <input type="email" placeholder="Your email address" />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <br />
+          <input type="password" placeholder="Create a Password" />
+        </div>
+
+        <input id="submit" type="submit" value="Sign up for GitHub" />
+      </div>
+      <div id="clear"></div>
+
+      <p>By clicking "Sign up for GitHub" ,you agree to our</p>
+      <p>&nbsp terms of service</p>
+      <p>&nbsp and</p>
+      <p>&nbsp privacy statement</p>
+      <p>&nbsp We'll occasionally send you account related emails.</p>
+    </div>
+  </body>
+</html>

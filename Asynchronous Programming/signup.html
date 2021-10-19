@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <style>
+      * {
+        font-family: monospace;
+      }
+      #navbar {
+        width: 100%;
+        height: 40px;
+        border: 2px solid black;
+        margin-top: 40px;
+      }
+      #navbar > span {
+        display: block;
+        float: right;
+        margin-right: 80px;
+        margin-top: 10px;
+        font-size: 20px;
+        height: 20px;
+      }
+      #navbar > span:hover {
+        background-color: crimson;
+
+        border-radius: 3px;
+        color: white;
+      }
+      form {
+        width: 300px;
+
+        display: grid;
+        grid-template-columns: 400px;
+        grid-template-rows: repeat(8, 50px);
+        margin: auto;
+        margin-top: 80px;
+        font-size: 20px;
+        box-shadow: 0px 0px 10px 2px;
+        padding: 30px;
+      }
+      input {
+        margin-top: -5px;
+        margin-bottom: 30px;
+        height: 30px;
+        border: 1px solid skyblue;
+        width: 250px;
+      }
+      #form > label,
+      #form > input,
+      #form > button {
+        margin-left: 30px;
+      }
+      button {
+        margin-top: 30px;
+        height: 30px;
+        background-color: teal;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        font-size: 20px;
+        width: 250px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <span> Signup </span>
+      <span> <a href="login.html">Login</a> </span>
+      <span> Home </span>
+    </div>
+    <form action="" id="form">
+      <label for="">Name</label>
+      <input type="text" id="name" />
+      <label for="">Contact</label>
+      <input type="tel" id="contact" />
+      <label for="">Email</label>
+      <input type="email" id="email" />
+      <label for="">Password</label>
+      <input type="password" id="password" />
+      <button id="register">Register</button>
+    </form>
+    <script>
+      function register() {
+        var userDetails = [];
+        var name = document.getElementById("name").value;
+        var contact = document.getElementById("contact").value;
+        var password = document.getElementById("password").value;
+        var email = document.getElementById("email").value;
+
+        var signup = {
+          Name: name,
+          Contact: contact,
+          Password: password,
+          Email: email,
+        };
+        if (name == "" || contact == "" || email == "" || password == "") {
+          alert("Please enter all the details");
+          return;
+        }
+        // userDetails.push(signup);
+        // console.log(userDetails);
+        document.getElementById("name").value = "";
+        document.getElementById("contact").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("email").value = "";
+        localStorage.setItem("userInfo", JSON.stringify(signup));
+        alert("You signed up successfully");
+      }
+      window.addEventListener("load", function () {
+        var btn = document.getElementById("register");
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          register();
+        });
+      });
+    </script>
+  </body>
+</html>

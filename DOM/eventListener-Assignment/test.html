@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      .mem {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="remove">
+      <div>
+        <div class="mem">Hello</div>
+        <button class="remove">submit</button>
+      </div>
+      <div>
+        <div>Hello</div>
+        <button class="remove">submit</button>
+      </div>
+      <div>
+        <div>Hello</div>
+        <button class="remove">submit</button>
+      </div>
+      <div>
+        <div>Hello</div>
+        <button class="remove">submit</button>
+      </div>
+      <div>
+        <div>Hello</div>
+        <button class="remove">submit</button>
+      </div>
+
+      <div>me</div>
+    </div>
+    <button id="removebtn">Remove</button>
+  </body>
+  <script>
+    var box = document.getElementById("remove");
+    var divs = document.querySelector("div");
+    var btn = document.getElementsByClassName("remove");
+
+    for (var i = 0; i < btn.length; i++) {
+      btn[i].onclick = function () {
+        var rem = this.parentElement;
+        console.log(rem);
+        rem.style.display = "none";
+      };
+    }
+
+    divs.onclick = function (ev) {
+      ev.setAttribute("class", "mem");
+      console.log(ev.className);
+      if (ev.target.className === "mem") ev.target.classList.toggle("checked");
+    };
+  </script>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search Engine</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      img {
+        height: 400px;
+        width: 200px;
+      }
+      .movies {
+        width: 700px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      #heading {
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        background-color: blueviolet;
+        height: 50px;
+        padding: 20px;
+        font-size: 20px;
+      }
+      * {
+        font-family: monospace;
+      }
+      .movie {
+        width: 700px;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 20px;
+        box-shadow: 0 0 10px 2px;
+        /* background-color: lightseagreen;
+        color: wheat; */
+        opacity: 1;
+
+        z-index: 2;
+      }
+      h3 {
+        color: red;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      h4 {
+        font-size: 18px;
+      }
+      label {
+        color: red;
+      }
+      input {
+        height: 30px;
+        width: 200px;
+      }
+      ::placeholder {
+        color: skyblue;
+        /* font-size: 20px; */
+      }
+      button {
+        background-color: crimson;
+        color: white;
+        height: 30px;
+        width: 100px;
+        border: 2px solid teal;
+      }
+      .noMovie {
+        width: 400px;
+        margin-left: 600px;
+      }
+      .movieDetails {
+        margin-bottom: auto;
+        color: blue;
+
+        z-index: 2;
+      }
+      body {
+        /* z-index: -1; */
+        height: 100%;
+        width: 100%;
+        background-image: url(https://4.bp.blogspot.com/-yVUjBf5OmTI/W3-7Ayrn0TI/AAAAAAAABKo/Ps_VgiKhbtYFnBSwjzzc0ueMalevbM0qQCEwYBhgL/s1600/action-movie-poster-background-latest.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="heading">
+      <label for="">Movie Search:</label>
+      <input type="text" name="" id="name" placeholder="Search your movie" />
+      <button id="search">Search</button>
+    </div>
+    <div id="container"></div>
+    <script>
+      var name = document.getElementById("name").value;
+      async function loadMovies(name) {
+        let url = `http://www.omdbapi.com/?apikey=4dd27e73&t=${name}`;
+        try {
+          let res = await fetch(url);
+          console.log("Nhi ana tha");
+          let data = await res.json();
+          console.log(data);
+          displayMovies(data);
+        } catch (error) {
+          var container = document.getElementById("container");
+          var img = document.createElement("img");
+          img.src = "https://monophy.com/media/l0Exq6f5yaMeb7Uic/monophy.gif";
+          img.className = "noMovie";
+          container.innerHTML = "";
+          container.append(img);
+          console.log(img);
+          console.log(error);
+        }
+      }
+
+      function displayMovies(data) {
+        var container = document.getElementById("container");
+        container.innerHTML = "";
+        const div = document.createElement("div");
+        div.className = "movies";
+        // for (let movie of data) {
+        //   const card = createMovieCard(movie);
+        //   div.append(card);
+        // }
+        const card = createMovieCard(data);
+        div.append(card);
+        container.append(div);
+      }
+
+      function createMovieCard(movie) {
+        const div = document.createElement("div");
+
+        var img = document.createElement("img");
+        img.src = movie.Poster;
+        var rating = document.createElement("h4");
+        rating.innerHTML = "Imdb Rating: " + movie.imdbRating;
+        var h3 = document.createElement("h3");
+        h3.innerHTML = "Title: " + movie.Title;
+        var h4 = document.createElement("h4");
+        h4.innerHTML = "Released: " + movie.Released;
+        var type = document.createElement("h4");
+        type.innerHTML = "Type: " + movie.Type;
+        var left = document.createElement("div");
+        var right = document.createElement("div");
+        var actors = document.createElement("h4");
+        actors.innerHTML = "Actors: " + movie.Actors;
+        var genre = document.createElement("h4");
+        genre.innerHTML = "Genre: " + movie.Genre;
+        var language = document.createElement("h4");
+        language.innerHTML = "Language: " + movie.Language;
+
+        left.append(img);
+        right.append(h3, rating, h4, type, actors, genre, language);
+        right.className = "movieDetails";
+        div.append(left, right);
+        div.className = "movie";
+        return div;
+      }
+
+      function search() {
+        var name = document.getElementById("name").value;
+        loadMovies(name);
+      }
+      window.addEventListener("load", function () {
+        var btn = document.getElementById("search");
+        btn.addEventListener("click", search);
+      });
+    </script>
+  </body>
+</html>

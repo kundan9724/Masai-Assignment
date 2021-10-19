@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vaccine Alert</title>
+    <style>
+      #heading {
+        text-align: center;
+        font-size: 40px;
+        color: red;
+        margin: 50px 0px;
+      }
+      .impInfo {
+        width: 1000px;
+        margin: auto;
+        display: flex;
+        font-size: 25px;
+        justify-content: space-evenly;
+        font-family: monospace;
+        color: white;
+        margin-bottom: 40px;
+      }
+      .impInfo > div {
+        margin-left: 20px;
+        background-color: crimson;
+        width: 400px;
+        padding-left: 15px;
+        height: 30px;
+      }
+      #form {
+        width: 300px;
+        margin: auto;
+        margin-top: 100px;
+        display: grid;
+        grid-template-rows: repeat(3, 50px);
+        gap: 20px;
+        box-shadow: 0px 0px 10px 2px;
+        padding: 30px;
+        color: gray;
+      }
+      #form > div {
+        margin-left: 40px;
+        height: 20px;
+      }
+      button {
+        margin-left: 90px;
+        color: white;
+        background-color: teal;
+        border-radius: 3px;
+        border: none;
+        height: 30px;
+      }
+      #head {
+        font-size: 20px;
+        color: blue;
+        text-align: center;
+      }
+      #age {
+        margin-left: 12px;
+      }
+      #queue {
+        width: 200px;
+        margin: auto;
+        margin-top: 40px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="heading">India's Largest Vaccine Drive</div>
+    <div class="impInfo">
+      <div id="count"></div>
+      <div id="vaccineCount"></div>
+    </div>
+    <div id="form">
+      <div id="head">Register Yourself</div>
+      <div>Name:<input type="text" id="name" /></div>
+      <div>Age:<input type="number" id="age" /></div>
+      <div><button id="register">Register</button></div>
+    </div>
+    <div id="queue"></div>
+
+    <script>
+      let vaccineCount = 10;
+      window.addEventListener("load", function () {
+        const btn = document.getElementById("register");
+        btn.addEventListener("click", register);
+      });
+      const queue = ["Kundan", "Vikash", "Tanuj", "Rohit"];
+      function checkQueue(name) {
+        return new Promise(function (resolve, reject) {
+          const id = setInterval(function () {
+            if (queue[0] == name) {
+              resolve(`${name} its your turn now`);
+              clearInterval(id);
+            }
+          }, 1000);
+        });
+      }
+      let registeredPeople = 4;
+      function register() {
+        let message = `There are ${queue.length} more people before you`;
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        if (registeredPeople == 10) {
+          alert("Please Visit Tomorrow");
+          document.getElementById("name").value = "";
+          document.getElementById("age").value = "";
+          // console.log(registeredPeople);
+          return;
+        }
+        registeredPeople++;
+        console.log(registeredPeople);
+
+        if (vaccineCount <= 0) {
+          alert("Please Visit Tomorrow");
+          return;
+        }
+
+        if (age > 60) queue.unshift(name);
+        else {
+          alert(message);
+          queue.push(name);
+        }
+
+        visualize(queue);
+        // console.log(queue);
+
+        checkQueue(name)
+          .then(function (message) {
+            alert(message);
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+
+        // vaccination();
+      }
+
+      function vaccination() {
+        // console.log(queue.length);
+        if (vaccineCount == 0) {
+          document.getElementById("name").value = "";
+          document.getElementById("age").value = "";
+          if (queue.length != 0) {
+            alert("Please Visit Tomorrow");
+            document.getElementById("queue").innerHTML = "";
+            document.getElementById("count").innerHTML =
+              "People Before You : " + 0;
+          }
+          clearInterval(id);
+          return;
+        } else if (queue.length != 0) {
+          queue.shift();
+          vaccineCount--;
+        }
+        visualize(queue);
+      }
+
+      function visualize(queue) {
+        const qConatiner = document.getElementById("queue");
+        qConatiner.innerHTML = "";
+        const ul = document.createElement("ul");
+        queue.forEach(function (name) {
+          const el = document.createElement("li");
+          el.textContent = name;
+          ul.append(el);
+        });
+        qConatiner.append(ul);
+        const peopleCount = document.getElementById("count");
+        peopleCount.innerHTML = "People Before You : " + queue.length;
+        // document.body.append(peopleCount);
+        let count = document.getElementById("vaccineCount");
+
+        count.innerHTML = "No of vaccines remaining : " + vaccineCount;
+        // console.log(vaccineCount);
+      }
+      visualize(queue);
+      const id = setInterval(vaccination, 10000);
+    </script>
+  </body>
+</html>

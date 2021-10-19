@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout 4</title>
+    <style>
+      .layout {
+        display: grid;
+        gap: 20px;
+      }
+      #top {
+        background: yellow;
+        height: 80px;
+        grid-area: nav;
+        font-size: 40px;
+      }
+      #first {
+        background: rgb(255, 0, 0);
+        height: 120px;
+        grid-area: box1;
+        font-size: 25px;
+      }
+      #second {
+        background: rgb(0, 255, 42);
+        height: 120px;
+        grid-area: box2;
+        font-size: 25px;
+      }
+      #third {
+        background: rgb(87, 99, 238);
+        height: 120px;
+        grid-area: box3;
+        font-size: 25px;
+      }
+      #fourth {
+        background: rgb(152, 152, 152);
+        height: 120px;
+        grid-area: box4;
+        font-size: 25px;
+      }
+      @media screen and (max-width: 600px) {
+        .layout {
+          grid-template-areas:
+            "nav"
+            "box1"
+            "box4"
+            "box2"
+            "box3";
+        }
+      }
+      @media screen and (min-width: 600px) {
+        .layout {
+          grid-template-areas:
+            "nav nav"
+            "box1 box3"
+            "box2 box4";
+        }
+      }
+      @media screen and (min-width: 992px) {
+        .layout {
+          grid-template-areas:
+            "nav nav nav nav"
+            "box1 box2 box3 box4";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div id="top">Navigation</div>
+      <div id="first">Box 1</div>
+      <div id="second">Box 2</div>
+      <div id="third">Box 3</div>
+      <div id="fourth">Box 4</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media</title>
+    <style>
+      #media {
+        display: grid;
+        gap: 20px;
+      }
+      #top {
+        grid-area: nav;
+        background-color: yellow;
+        height: 80px;
+        font-size: 40px;
+      }
+      #left {
+        grid-area: left-b;
+        background-color: rgb(255, 0, 0);
+        height: 400px;
+        font-size: 25px;
+      }
+      #right {
+        grid-area: right-b;
+        background-color: rgb(0, 255, 42);
+        height: 400px;
+        font-size: 25px;
+      }
+      @media screen and (max-width: 600px) {
+        #media {
+          grid-template-areas:
+            "nav"
+            "right-b"
+            "left-b";
+        }
+      }
+      @media screen and (min-width: 600px) {
+        #media {
+          grid-template-areas:
+            "nav nav"
+            "left-b right-b";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="media">
+      <div id="top">Navigation</div>
+      <div id="left">LEFT BOX</div>
+      <div id="right">RIGHT BOX</div>
+    </div>
+  </body>
+</html>

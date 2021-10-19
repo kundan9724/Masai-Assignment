@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeaderBoard</title>
+    <style>
+      .leaderboard {
+        width: 300px;
+        margin: auto;
+        margin-top: 50px;
+      }
+      .min {
+        float: left;
+        text-align: center;
+      }
+      .max {
+        float: right;
+        text-align: center;
+      }
+      #min {
+        background-color: red;
+        width: 80px;
+        height: 80px;
+        color: white;
+        padding-top: 10px;
+        font-size: 50px;
+      }
+      #max {
+        background-color: green;
+        width: 80px;
+        height: 80px;
+        color: white;
+        padding-top: 10px;
+        font-size: 40px;
+      }
+      p {
+        text-align: center;
+        clear: both;
+      }
+      p + div {
+        background-color: gray;
+        width: 150px;
+        height: 50px;
+        margin: auto;
+        margin-bottom: 20px;
+      }
+      .buttons {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: auto;
+        gap: 10px;
+        /* height: 50px; */
+      }
+      #submit {
+        width: 150px;
+        height: 30px;
+        margin: auto;
+        margin-top: 20px;
+      }
+      #enter {
+        width: 150px;
+        height: 50px;
+        color: white;
+        background-color: black;
+      }
+      #score {
+        color: white;
+        text-align: center;
+        font-size: 50px;
+      }
+      .green {
+        background-color: rgb(102, 129, 0);
+        height: 50px;
+      }
+      .orange {
+        background-color: rgb(255, 102, 0);
+        height: 50px;
+      }
+      .purple {
+        margin-top: 20px;
+        background-color: rgb(129, 0, 101);
+        height: 50px;
+        width: 93px;
+        margin-left: 105px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="leaderboard">
+      <div class="min">
+        <div id="min">43</div>
+        <p>MIN</p>
+      </div>
+      <div class="max">
+        <div id="max">2019</div>
+        <p>MAX</p>
+      </div>
+      <p>SCORE</p>
+      <div id="score"></div>
+      <div class="buttons">
+        <button onclick="click_1()" class="green">1</button>
+        <button onclick="click_2()" class="orange">2</button>
+        <button onclick="click_3()" class="green">3</button>
+        <button onclick="click_4()" class="orange">4</button>
+        <button onclick="click_5()" class="orange">5</button>
+        <button onclick="click_6()" class="orange">6</button>
+        <button onclick="click_7()" class="green">7</button>
+        <button onclick="click_8()" class="orange">8</button>
+        <button onclick="click_9()" class="green">9</button>
+      </div>
+      <button onclick="click_0()" class="purple">0</button>
+      <div id="submit">
+        <button id="enter" onclick="click_enter()">ENTER</button>
+      </div>
+    </div>
+    <script>
+      var arr = [];
+      var min_score = 43;
+      var max_score = 2019;
+      function click_0() {
+        arr.push(0);
+        var score = document.getElementById("score");
+        score.innerText = arr.join("");
+      }
+      function click_1() {
+        arr.push(1);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_2() {
+        arr.push(2);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_3() {
+        arr.push(3);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_4() {
+        arr.push(4);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_5() {
+        arr.push(5);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_6() {
+        arr.push(6);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_7() {
+        arr.push(7);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_8() {
+        arr.push(8);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_9() {
+        arr.push(9);
+        var score = document.getElementById("score");
+        score.textContent = arr.join("");
+      }
+      function click_enter() {
+        var result = arr.join("");
+        result = Number(result);
+        var score = document.getElementById("score");
+        score.textContent = result;
+
+        var min = document.getElementById("min");
+        min.textContent = min_score;
+        var max = document.getElementById("max");
+        max.textContent = max_score;
+        if (result < min_score) {
+          min.textContent = result;
+          min_score = result;
+        }
+
+        if (result > max_score) {
+          max.textContent = result;
+          max_score = result;
+        }
+        score.textContent = "#";
+        arr = [];
+      }
+    </script>
+  </body>
+</html>

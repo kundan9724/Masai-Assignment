@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marriage Age</title>
+  </head>
+  <body>
+    <label for="">Year Of Birth</label>
+    <input type="number" id="birthyear" />
+    <label for=""
+      >Gender
+      <select name="" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <input type="submit" id="submit" />
+    </label>
+    <script>
+      var sub = document.getElementById("submit");
+
+      sub.onclick = function () {
+        var gen = document.getElementById("gender").selectedIndex;
+        var option = document.getElementsByTagName("option")[gen].value;
+        var birthYear = document.getElementById("birthyear");
+        if (option == "male") {
+          if (birthYear.value <= 2000) alert("valid age for marriage");
+          else alert("Not valid age for marriage");
+        } else {
+          if (birthYear.value <= 2003) alert("valid age for marriage");
+          else alert("Not valid age for marriage");
+        }
+        birthYear.value = "";
+      };
+    </script>
+  </body>
+</html>

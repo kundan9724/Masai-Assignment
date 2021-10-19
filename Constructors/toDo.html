@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <script src="toDoList.js"></script>
+    <style>
+      * {
+        font-family: monospace;
+      }
+      #toDo {
+        background-color: red;
+        color: white;
+        margin-bottom: 40px;
+      }
+      .tasks {
+        margin-top: 30px;
+
+        display: grid;
+        width: 600px;
+        margin: auto;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 20px;
+        background-color: skyblue;
+        height: 35px;
+        margin-bottom: 20px;
+      }
+      .divs.checked {
+        background: #888;
+        color: #fff;
+        text-decoration: line-through;
+      }
+      h1 {
+        text-align: center;
+        color: white;
+        margin-top: 20px;
+      }
+      #heading {
+        width: 900px;
+        margin-left: 530px;
+        margin-top: 40px;
+      }
+      #inp {
+        width: 400px;
+        font-size: 20px;
+        height: 30px;
+        margin-bottom: 40px;
+      }
+      button {
+        color: white;
+        background-color: teal;
+        font-size: 20px;
+        height: 35px;
+        border-radius: 4px;
+        border: none;
+      }
+      #count {
+        margin-left: 200px;
+        height: 100px;
+        color: white;
+        background-color: #34568b;
+        font-size: 30px;
+      }
+      .divs {
+        font-size: 30px;
+        height: 35px;
+        margin-top: -30px;
+        margin-left: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toDo">
+      <h1>To Do List</h1>
+      <div id="heading">
+        <input type="text" id="inp" placeholder="Type your task" />
+        <button onclick="addTask()" id="btn">Add Task</button>
+        <span id="count">0</span>
+      </div>
+    </div>
+    <div id="task"></div>
+  </body>
+</html>

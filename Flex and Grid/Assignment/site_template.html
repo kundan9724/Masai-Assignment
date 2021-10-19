@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Template</title>
+    <style>
+      #top {
+        height: 50px;
+        background-color: rgb(255, 43, 42);
+        grid-area: nav;
+      }
+      #left {
+        height: 600px;
+        width: 200px;
+        background-color: rgb(86, 212, 0);
+        grid-area: left-b;
+      }
+      #right {
+        height: 600px;
+        background-color: rgb(33, 120, 103);
+        width: 580px;
+        grid-area: right-b;
+      }
+      .layout {
+        margin: auto;
+        display: grid;
+        gap: 20px;
+        width: 800px;
+        justify-content: center;
+        grid-template-areas:
+          "nav nav"
+          "left-b right-b";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div id="top"></div>
+      <div id="left"></div>
+      <div id="right"></div>
+    </div>
+  </body>
+</html>

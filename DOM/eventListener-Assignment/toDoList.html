@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo list</title>
+    <style>
+      .checked {
+        text-decoration: line-through;
+        color: white;
+      }
+      .close {
+        color: red;
+        font-size: large;
+      }
+      h1 {
+        text-align: center;
+      }
+      header {
+        background-color: red;
+      }
+      #txt {
+        height: 30px;
+        width: 500px;
+        margin-left: 530px;
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+      #btn {
+        height: 36px;
+        width: 80px;
+        background-color: teal;
+        color: white;
+      }
+      li {
+        font-size: 25px;
+        list-style-type: none;
+        width: 90%;
+        background-color: steelblue;
+        margin: auto;
+        margin-bottom: 2px;
+        padding: 8px;
+        color: black;
+        font-family: monospace;
+      }
+      li:hover {
+        background-color: cornflowerblue;
+      }
+      .close {
+        font-size: 25px;
+        padding: 8px;
+        float: right;
+        margin-right: 60px;
+      }
+      .close:hover {
+        color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>To Do List</h1>
+      <input type="text" placeholder="Title" id="txt" />
+      <span> <button id="btn">Add</button></span>
+    </header>
+    <ul id="newTask">
+      <li>Breakfast</li>
+      <li class="checked">Lecture</li>
+    </ul>
+    <script>
+      var btn = document.getElementById("btn");
+      var task = document.getElementById("newTask");
+
+      btn.addEventListener("click", newTask);
+      function newTask() {
+        var li = document.createElement("li");
+        var taskField = document.getElementById("txt").value;
+        var t = document.createTextNode(taskField);
+        li.appendChild(t);
+        if (taskField === "") {
+          alert("You must write something!");
+        } else {
+          task.appendChild(li);
+          //   document.getElementById("txt").value = "";
+        }
+        var span = document.createElement("span");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+        task.appendChild(li);
+
+        for (var i = 0; i < close.length; i++) {
+          close[i].onclick = function () {
+            var remove = this.parentElement;
+            remove.style.display = "none";
+          };
+        }
+      }
+
+      var list = document.querySelector("ul");
+      list.addEventListener(
+        "click",
+        function (ev) {
+          if (ev.target.tagName === "LI") {
+            ev.target.classList.toggle("checked");
+          }
+        },
+        false
+      );
+
+      // close button
+      var myList = document.getElementsByTagName("li");
+
+      for (var i = 0; i < myList.length; i++) {
+        var span = document.createElement("span");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        myList[i].appendChild(span);
+      }
+
+      //
+
+      //   close the item when click on close
+      var close = document.getElementsByClassName("close");
+      for (var i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+          var remove = this.parentElement;
+          remove.style.display = "none";
+        };
+      }
+
+      //
+    </script>
+  </body>
+</html>

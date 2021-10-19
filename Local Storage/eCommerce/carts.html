@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <style>
+      .product {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        /* border: 2px solid green; */
+        margin-top: 20px;
+        width: 220px;
+        height: 200px;
+        margin-left: 120px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+      }
+      * {
+        font-family: monospace;
+      }
+      .product {
+        position: relative;
+      }
+      .product:hover {
+        margin-top: 5px;
+      }
+      #products {
+        display: grid;
+        width: 1200px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 20px;
+        text-align: center;
+        margin-top: 100px;
+      }
+      h2 {
+        font-size: 25px;
+        color: gray;
+      }
+      #input {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 40px;
+      }
+
+      img {
+        height: 80px;
+        width: 80px;
+        margin-top: 20px;
+        position: relative;
+      }
+      img:hover {
+        top: 5px;
+      }
+      h1 {
+        margin-left: 10px;
+        margin-top: 30px;
+        font-size: 17px;
+        font-family: cursive;
+      }
+      h2 {
+        margin-top: -20px;
+      }
+
+      #heading {
+        text-align: center;
+        color: red;
+        font-size: 40px;
+      }
+      .button {
+        width: 150px;
+        height: 30px;
+        color: white;
+        background-color: green;
+        border-radius: 5px;
+        margin-top: 30px;
+        margin-left: -80px;
+        border: none;
+      }
+      #total,
+      #items {
+        float: right;
+        margin-right: 120px;
+        background-color: crimson;
+        color: white;
+        width: 300px;
+        font-size: 25px;
+        /* margin-top: -70px; */
+      }
+      #couponCode {
+        margin-left: 100px;
+      }
+      #coupon {
+        border: 2px solid green;
+        height: 20px;
+        width: 150px;
+      }
+      label {
+        font-size: 25px;
+        color: teal;
+      }
+      #submit {
+        color: white;
+        background-color: magenta;
+        border: none;
+        height: 25px;
+        width: 150px;
+      }
+      #checkOut {
+        margin-top: -60px;
+        margin-right: 300px;
+        float: right;
+        height: 30px;
+        width: 150px;
+        background-color: blue;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <span> <h1 id="heading">Your Cart</h1></span>
+    <button id="checkOut" onclick="checkOut()">CheckOut</button>
+    <span id="couponCode">
+      <label for="">Coupon Code:&nbsp;</label>
+      <input type="text" id="coupon" placeholder="fill coupon code" />
+      <button id="submit">Apply Promo</button>
+    </span>
+
+    <div id="total">Total</div>
+    <div id="items"></div>
+
+    <div id="products"></div>
+    <script>
+      function submit() {
+        var total = document.getElementById("total");
+
+        var coupon = document.getElementById("coupon").value;
+        console.log(coupon);
+        let sum = 0;
+
+        for (var j = 0; j < products.length; j++) {
+          sum += Number(products[j].price);
+        }
+
+        if (coupon == "masai30") {
+          if (products.length == 0) alert("Add something to get Discount!");
+          else {
+            alert("Congratulation You Get 30% discount");
+            sum -= (sum * 30) / 100;
+            total.innerHTML = "Total Amount - " + "₹" + sum;
+          }
+        } else alert("Incorrect Coupon Code");
+        document.getElementById("coupon").value = "";
+      }
+
+      function displayProducts(products, container) {
+        container.innerHTML = "";
+        let sum = 0;
+
+        for (var j = 0; j < products.length; j++) {
+          sum += Number(products[j].price);
+        }
+        var total = document.getElementById("total");
+        total.innerHTML = "Total Amount - " + "₹" + sum;
+        // submit(sum);
+        // document.body.append(total);
+        // console.log(products.length);
+        for (var i = 0; i < products.length; i++) {
+          //   console.log(products);
+          var heading = document.createElement("div");
+          heading.setAttribute("class", "product");
+          var prodName = document.createElement("div");
+          prodName.setAttribute("class", "name");
+
+          var h1 = document.createElement("h1");
+          h1.innerHTML = products[i].name;
+          var prodPrice = document.createElement("div");
+          var h2 = document.createElement("h2");
+          h2.innerHTML = "₹" + products[i].price;
+          var img = document.createElement("img");
+          img.src = products[i].image;
+
+          prodName.append(h1);
+
+          heading.append(prodName);
+
+          heading.append(img);
+          heading.append(prodPrice);
+          prodPrice.append(h2);
+          var btn = document.createElement("button");
+          btn.innerHTML = "Remove from Cart";
+          heading.append(btn);
+          btn.setAttribute("class", "button");
+
+          container.append(heading);
+        }
+        var items = document.getElementById("items");
+        items.innerHTML = "No of Products - " + i;
+      }
+
+      function productLoad() {
+        var data = JSON.parse(localStorage.getItem("cartProduct"));
+        //console.log(data.length);
+
+        var container = document.getElementById("products");
+        if (data) {
+          products = data;
+          //console.log(products);
+          displayProducts(products, container);
+          //console.log(products.length);
+        }
+      }
+
+      function removeItem() {
+        var button = document.getElementsByClassName("button");
+        for (var i = 0; i < button.length; i++) {
+          button[i].onclick = function () {
+            for (key in button) {
+              if (this == button[key]) {
+                var j = key;
+                break;
+              }
+            }
+            products.splice(j, 1);
+            var container = document.getElementById("products");
+            var cartItems = JSON.parse(localStorage.getItem("cartProduct"));
+            cartItems.splice(j, 1);
+            localStorage.setItem("cartProduct", JSON.stringify(cartItems));
+            displayProducts(products, container);
+
+            console.log(j);
+            removeItem();
+          };
+        }
+      }
+      window.addEventListener("load", function () {
+        productLoad();
+        removeItem();
+        var apply = document.getElementById("submit");
+        console.log(apply.innerHTML);
+        apply.addEventListener("click", submit);
+      });
+      function checkOut() {
+        var cartItems = JSON.parse(localStorage.getItem("cartProduct"));
+        if (cartItems.length == 0) alert("Please add products to the cart");
+        else {
+          alert("Thank You for Shopping");
+          window.open("success.html");
+
+          products = [];
+          var container = document.getElementById("products");
+
+          cartItems = [];
+          localStorage.setItem("cartProduct", JSON.stringify(cartItems));
+          displayProducts(products, container);
+        }
+      }
+    </script>
+  </body>
+</html>

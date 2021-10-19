@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      * {
+        font-family: monospace;
+      }
+      #navbar {
+        width: 100%;
+        height: 40px;
+        border: 2px solid black;
+        margin-top: 40px;
+      }
+      #navbar > span {
+        display: block;
+        float: right;
+        margin-right: 80px;
+        margin-top: 10px;
+        font-size: 20px;
+        height: 20px;
+      }
+      #navbar > span:hover {
+        background-color: crimson;
+
+        border-radius: 3px;
+        color: white;
+      }
+      .img {
+        height: 200px;
+        width: 200px;
+        margin: 20px;
+      }
+      #container {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-left: 50px;
+        padding: 20px;
+      }
+
+      .movie {
+        height: 240px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        box-shadow: 0px 0px 10px 2px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        color: rosybrown;
+      }
+      .right {
+        margin-top: 20px;
+        margin-left: -30px;
+      }
+      #buttons {
+        width: 600px;
+        margin: auto;
+        margin-top: 50px;
+      }
+      #low,
+      #high {
+        height: 30px;
+        font-size: 15px;
+        font-family: monospace;
+        color: white;
+        background-color: mediumslateblue;
+        margin-right: 30px;
+        border: none;
+      }
+      #star {
+        width: 30px;
+        height: 30px;
+        display: inline;
+      }
+      #imdb {
+        margin-top: -25px;
+        margin-left: 40px;
+        color: #333333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <span> Signup </span>
+      <span> Login </span>
+      <span> Home </span>
+    </div>
+    <!-- <div id="buttons">
+      <button id="low">Sort by Low rating to High</button>
+      <button id="high">Sort by High rating to Low</button>
+    </div> -->
+
+    <div id="container"></div>
+    <script>
+      var moviesList = JSON.parse(localStorage.getItem("moviesList"));
+      console.log(moviesList);
+      function displayMovies(moviesList) {
+        var container = document.getElementById("container");
+        container.innerHTML = "";
+
+        for (var i = 0; i < moviesList.length; i++) {
+          var img = document.createElement("img");
+          img.src = moviesList[i].poster;
+          img.className = "img";
+          var title = document.createElement("h3");
+          title.innerHTML = "Title: " + moviesList[i].name;
+          var year = document.createElement("h3");
+          year.innerHTML = "Released: " + moviesList[i].releaseDate;
+          var imdb = document.createElement("h3");
+          var star = document.createElement("img");
+          star.id = "star";
+          star.src =
+            "https://lh3.googleusercontent.com/proxy/BeZmTNmekwvZyU9C_sZ7XslFUokZ8DtHq_r4uR7mLB5eV3H2CfzfR2fbfkvbDj-EtvcMIeR2WSHVj3Jp4vTnLtubT8N5_z8";
+          var span = document.createElement("span");
+
+          imdb.innerHTML = "IMDb: " + moviesList[i].imdbRating;
+          imdb.id = "imdb";
+          span.append(star, imdb);
+          var left = document.createElement("div");
+          left.append(img);
+          var right = document.createElement("div");
+          right.append(title, year, span);
+          right.className = "right";
+          var movie = document.createElement("div");
+          movie.className = "movie";
+          movie.append(left, right);
+          container.append(movie);
+        }
+      }
+
+      window.addEventListener("load", function () {
+        var moviesList = JSON.parse(localStorage.getItem("moviesList"));
+        displayMovies(moviesList);
+        var low = document.getElementById("low");
+        low.addEventListener("click", function () {
+          moviesList.sort(function (a, b) {
+            return a.imdbRating - b.imdbRating;
+          });
+          displayMovies(moviesList);
+        });
+
+        var high = document.getElementById("high");
+        high.addEventListener("click", function () {
+          moviesList.sort(function (a, b) {
+            return b.imdbRating - a.imdbRating;
+          });
+          displayMovies(moviesList);
+        });
+      });
+    </script>
+  </body>
+</html>

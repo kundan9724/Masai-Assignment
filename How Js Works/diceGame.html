@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Game</title>
+    <script src="diceGame.js"></script>
+    <style>
+      #box {
+        width: 1200px;
+        height: 200px;
+        margin: auto;
+        background-color: white;
+      }
+      #dice {
+        text-align: center;
+        background-color: crimson;
+        color: white;
+      }
+      #dice:hover {
+        font-family: cursive;
+        opacity: 0.8;
+      }
+      .box1 {
+        width: 150px;
+        /* margin: auto; */
+        height: 150px;
+
+        background-color: wheat;
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 500px;
+        border-radius: 10px;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "cir cir1"
+          "cir2 cir3"
+          "cir4 cir5";
+        gap: 20px;
+      }
+      .circle {
+        width: 15px;
+        height: 15px;
+        background-color: red;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+
+      .circle {
+        grid-area: cir;
+      }
+
+      .circle1 {
+        width: 15px;
+        height: 15px;
+        background-color: crimson;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+
+      .circle1 {
+        grid-area: cir1;
+      }
+
+      .circle2 {
+        width: 15px;
+        height: 15px;
+        background-color: darkorange;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+
+      .circle2 {
+        grid-area: cir2;
+      }
+
+      .circle3 {
+        width: 15px;
+        height: 15px;
+        background-color: purple;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+
+      .circle3 {
+        grid-area: cir3;
+      }
+
+      .circle4 {
+        width: 15px;
+        height: 15px;
+        background-color: blue;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+
+      .circle4 {
+        grid-area: cir4;
+      }
+
+      .circle5 {
+        width: 15px;
+        height: 15px;
+        background-color: darkgreen;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+
+      .circle5 {
+        grid-area: cir5;
+      }
+
+      #dice {
+        margin-left: 600px;
+        margin-top: 40px;
+        font-family: monospace;
+        height: 50px;
+        width: 300px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div class="box1" id="box1">
+        <div id="no1"></div>
+        <div id="no2"></div>
+        <div id="no3"></div>
+        <div id="no4"></div>
+        <div id="no5"></div>
+        <div id="no6"></div>
+      </div>
+    </div>
+    <button onclick="myFunction()" id="dice">Throw dice</button>
+  </body>
+</html>

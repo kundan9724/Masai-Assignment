@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Springboard</title>
+    <style>
+      .container {
+        width: 50%;
+        height: 700px;
+        margin: auto;
+        color: white;
+        background-color: rgb(0, 201, 206);
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .box {
+        border: 2px solid black;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5%;
+      }
+      p {
+        text-align: center;
+        padding-left: 1%;
+        padding-right: 1%;
+      }
+      h1 {
+        font-size: 25px;
+
+        text-align: center;
+      }
+      .submit {
+        text-align: center;
+        margin-bottom: 0px;
+      }
+      .submit > input {
+        background-color: orchid;
+        color: white;
+        height: 30px;
+        width: 150px;
+        border: 2px solid white;
+      }
+      #calm,
+      #calm > .submit > input {
+        background-color: rgb(255, 101, 103);
+      }
+      #facts,
+      #facts > .submit > input {
+        background-color: rgb(0, 193, 73);
+      }
+      #productivity,
+      #productivity > .submit > input {
+        background-color: rgb(232, 0, 0);
+      }
+      #business,
+      #business > .submit > input {
+        background-color: rgb(8, 70, 150);
+      }
+      #social,
+      #social > .submit > input {
+        background-color: rgb(237, 0, 149);
+      }
+      #health,
+      #health > .submit > input {
+        background-color: rgb(0, 183, 131);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box" id="calm">
+        <h1>KEEPING CALM</h1>
+        <p>
+          In times like these,it's imossible to not panic.Here's a little
+          something to put your mind at ease.
+        </p>
+
+        <div class="submit">
+          <input type="submit" value="DISCOVER NOW" />
+        </div>
+      </div>
+      <div class="box" id="facts">
+        <h1>COVID-19 FACTS</h1>
+        <p>
+          The spread of fake news and misinformation is a virus in itself.Only
+          verified and credible sources here.
+        </p>
+        <div class="submit">
+          <input type="submit" value="DISCOVER NOW" />
+        </div>
+      </div>
+      <div class="box" id="productivity">
+        <h1>PRODUCTIVITY</h1>
+        <p>
+          While we'are all practicing self-isolation and social distancing
+          ,feeling productive and useful is a challenge .Find all you need to
+          feel productive.
+        </p>
+        <div class="submit">
+          <input type="submit" value="DISCOVER NOW" />
+        </div>
+      </div>
+      <div class="box" id="business">
+        <h1>BUSINESS ONLINE</h1>
+        <p>
+          The world has come to a stanstill,doesn't mean work has to.Discover
+          ways to conduct your business online.
+        </p>
+        <div class="submit">
+          <input type="submit" value="DISCOVER NOW" />
+        </div>
+      </div>
+      <div class="box" id="social">
+        <h1>SOCIAL</h1>
+        <p>
+          It's no secret that we'are social creatures .In times of social
+          distance and self-isolation ,discover ways to keep the social
+          interactions going.
+        </p>
+        <div class="submit">
+          <input type="submit" value="DISCOVER NOW" />
+        </div>
+      </div>
+      <div class="box" id="health">
+        <h1>HEALTH</h1>
+        <p>
+          It's no secret that we'are social creatures .In times of social
+          distance and self-isolation ,discover ways to keep the social
+          interactions going.
+        </p>
+        <div class="submit">
+          <input type="submit" value="DISCOVER NOW" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

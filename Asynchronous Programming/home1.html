@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      * {
+        font-family: monospace;
+      }
+      #navbar {
+        width: 100%;
+        height: 40px;
+        border: 2px solid black;
+        margin-top: 40px;
+      }
+      #navbar > span {
+        display: block;
+        float: right;
+        margin-right: 80px;
+        margin-top: 10px;
+        font-size: 20px;
+        height: 20px;
+      }
+      #navbar > span:hover {
+        background-color: crimson;
+
+        border-radius: 3px;
+        color: white;
+      }
+
+      img {
+        width: 600px;
+        height: 300px;
+      }
+      .slideshow {
+        padding: 50px;
+      }
+      .moviesShow {
+        margin-top: 50px;
+        width: 100%;
+        background-color: teal;
+        /* height: 400px; */
+      }
+      #movie1,
+      #movie2,
+      #movie3 {
+        position: relative;
+        font-size: 25px;
+        color: white;
+      }
+      #movie1 > div + div,
+      #movie2 > div + div,
+      #movie3 > div + div {
+        position: absolute;
+        margin-top: -280px;
+        margin-left: 650px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <span> Signup </span>
+      <span> Login </span>
+      <span> Home </span>
+    </div>
+    <script>
+      var slideShow = document.createElement("div");
+
+      let div1 = document.createElement("div");
+      let div11 = document.createElement("div");
+      let img1 = document.createElement("img");
+      img1.src =
+        "https://static.sacnilk.com/articles/entertainment/box_office/1039.jpg";
+      div11.append(img1);
+      div1.className = "slideshow";
+      div1.id = "movie1";
+      let description1 = document.createElement("div");
+      description1.innerHTML =
+        "Story: This is biopic of Dashrath Manjhi, India's mountain man who single-handedly made a road through the mountains of Gehlaur. What gave him the strength to take on this onerous task is his deep love for his wife who meets with an accident here.";
+      div1.append(div11, description1);
+      let div2 = document.createElement("div");
+      let img2 = document.createElement("img");
+      let div21 = document.createElement("div");
+      img2.src =
+        "https://image.airtel.tv/ULTRA/ULTRA_MOVIE_610902b73b971457336d8c6e/LANDSCAPE_169/LANDSCAPE_169_3_IDIOTS_LANDSCAPE_1920_x_1080.jpg";
+      div21.append(img2);
+      div2.className = "slideshow";
+      div2.id = "movie2";
+      let description2 = document.createElement("div");
+      description2.innerHTML =
+        "A comedy about three college buddies that doesn't let its more serious theme of “self-actualization” get in the way of the entertainment, “3 Idiots” takes a while to lay out its game plan but pays off emotionally in its second half.";
+      div2.append(div21, description2);
+      let div3 = document.createElement("div");
+
+      let img3 = document.createElement("img");
+      let div31 = document.createElement("div");
+      img3.src =
+        "https://static.toiimg.com/thumb/msid-54448208,imgsize-54442,width-800,height-600,resizemode-75/54448208.jpg";
+      div3.className = "slideshow";
+      div31.append(img3);
+      div3.id = "movie3";
+      let description3 = document.createElement("div");
+      description3.innerHTML =
+        "It is based on the life of former Test, ODI and T20I captain of the Indian national cricket team, Mahendra Singh Dhoni. The film stars the late Sushant Singh Rajput as Dhoni, along with Disha Patani, Kiara Advani, and Anupam Kher. The film chronicles the life of Dhoni from a young age through a series of life events.";
+      div3.append(div31, description3);
+      slideShow.className = "moviesShow";
+      slideShow.append(div1, div2, div3);
+      document.body.append(slideShow);
+      var slideIndex = 0;
+      function slideImages() {
+        let slideshow = document.getElementsByClassName("slideshow");
+        for (var i = 0; i < slideshow.length; i++) {
+          slideshow[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slideshow.length) slideIndex = 1;
+        slideshow[slideIndex - 1].style.display = "block";
+        setTimeout(slideImages, 5000);
+        console.log(slideshow.length);
+      }
+
+      slideImages();
+    </script>
+  </body>
+</html>

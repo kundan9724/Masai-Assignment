@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>McDonalds Food Ticket System</title>
+    <style>
+      #food {
+        width: 400px;
+        /* margin: auto; */
+        margin-top: 50px;
+        margin-left: 600px;
+      }
+      #heading {
+        width: 300px;
+        margin: auto;
+        margin-top: 100px;
+      }
+      h1 {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        /* color: white; */
+        /* margin-left: -80px; */
+        font-size: 22px;
+        margin-top: 0px;
+      }
+      option {
+        background-color: skyblue;
+        color: white;
+      }
+      button {
+        background-color: crimson;
+        color: white;
+        font-family: monospace;
+        border: none;
+        border-radius: 2px;
+      }
+      #display {
+        width: 600px;
+        margin-left: 450px;
+        /* background-color: teal; */
+        /* color: white; */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        height: 300px;
+        margin-top: 40px;
+        text-align: center;
+      }
+      #display > p {
+        color: blue;
+        float: right;
+        margin-right: 20px;
+        font-size: 16px;
+        font-family: cursive;
+      }
+      img {
+        height: 200px;
+        width: 300px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      h3 {
+        font-family: cursive;
+        color: midnightblue;
+        margin-left: -70px;
+        margin-top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="background"></div>
+    <div id="heading">
+      <!-- <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/McDonald%27s_logo.svg/220px-McDonald%27s_logo.svg.png"
+        alt=""
+      /> -->
+      <h1>Welcome to McDonald's</h1>
+    </div>
+    <div id="food">
+      <select name="" id="items">
+        <option value="McAloo Tikki">Mexican McAloo Tikki</option>
+        <option value="Chicken Kebab">Chicken Kebab Wrap.</option>
+        <option value="McAlooTM">McAlooTM Serve Size</option>
+        <option value="Veg Pizza">Veg Pizza McPuffTM Serve Size</option>
+        <option value="Iced Tea">Iced Tea</option>
+      </select>
+      <button id="order">Order Food</button>
+    </div>
+    <div id="display"></div>
+
+    <script>
+      let orderId = 0;
+      function selectedItem() {
+        let display = document.getElementById("display");
+        display.innerHTML = "";
+        const item = document.getElementById("items").value;
+        alert("You will get your food in 5 seconds");
+
+        function orderComplete() {
+          orderId++;
+          alert(`Order Id: ${orderId} please receive your food from counter`);
+          let p = document.createElement("p");
+          p.innerHTML = `Order Id: ${orderId}`;
+          let itemName = document.createElement("h3");
+          itemName.innerHTML = item;
+          let img = document.createElement("img");
+          if (item == "McAloo Tikki") {
+            img.src =
+              "https://bloximages.chicago2.vip.townnews.com/indiawest.com/content/tncms/assets/v3/editorial/a/59/a59dea3c-07bc-11e9-b619-7b527fed01b3/5c21454009fa7.image.jpg";
+          } else if (item == "Chicken Kebab") {
+            img.src =
+              "https://www.licious.in/blog/wp-content/uploads/2020/12/Tandoori-chicken-Kebabs.jpg";
+          } else if (item == "McAlooTM")
+            img.src =
+              "https://www.mcdonaldsindia.com/trulyindianburger/images/mc-veggie.png";
+          else if (item == "Veg Pizza")
+            img.src =
+              "https://imgstaticcontent.lbb.in/lbbnew/wp-content/uploads/sites/2/2016/06/Vegpizzastoscano2-i.jpg";
+          else
+            img.src =
+              "https://i.pinimg.com/originals/0c/df/0e/0cdf0ec2e04cab46bbfba666ef6dad22.png";
+
+          let display = document.getElementById("display");
+
+          display.append(img, p, itemName);
+        }
+        setTimeout(orderComplete, 5000);
+      }
+      window.addEventListener("load", function () {
+        const btn = document.getElementById("order");
+        btn.addEventListener("click", selectedItem);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>Practise Creators</title>
+  </head>
+  <body>
+    <div id="headings"></div>
+    <div id="cont"></div>
+    <ul id="vikings">
+      <li>Priyanshu</li>
+    </ul>
+    <button onclick="myFuntion()">Create H1</button>
+    <button onclick="myHeadings()">Create 2 H3</button>
+    <button onclick="create_divs()">Create DIVS</button>
+    <button onclick="add_students()">Add Students</button>
+    <button onclick="add_copy()">Add Copyright</button>
+    <script>
+      var students = [
+        "Ajay",
+        "Akshay",
+        "Anusha",
+        "Chandrashekhara",
+        "Haren",
+        "Hasaan",
+        "Mahesh",
+        "Mousumi",
+        "Pavan",
+        "Rahul",
+        "Sumanta",
+        "Venkatesh",
+        "Vetrival",
+        "Vijayendra",
+      ];
+      function myFuntion() {
+        let h = document.createElement("h1");
+        h.textContent = "MASAI";
+        var newDiv = document.getElementById("headings");
+        newDiv.appendChild(h);
+      }
+      function myHeadings() {
+        let heading1 = document.createElement("h3");
+        let heading2 = document.createElement("h3");
+        heading1.textContent = "A Transformation in education!";
+        heading2.textContent = "Learn to earn, pay when you get";
+        var newDiv = document.getElementById("headings");
+        newDiv.appendChild(heading1);
+        newDiv.appendChild(heading2);
+      }
+      function create_divs() {
+        var newDiv = document.getElementById("cont");
+        for (var i = 1; i <= 10; i++) {
+          var div = document.createElement("div");
+          div.textContent = i;
+          newDiv.append(div);
+        }
+      }
+      function add_students() {
+        let ul = document.getElementById("vikings");
+        for (var i = 0; i < students.length; i++) {
+          var list = document.createElement("li");
+          list.textContent = students[i];
+          ul.append(list);
+        }
+      }
+      function add_copy() {
+        let parent = document.body;
+        var copy = document.createElement("p");
+        copy.textContent = " @ masai 2019";
+        var vikings = document.getElementById("vikings");
+        parent.insertBefore(copy, vikings);
+      }
+    </script>
+  </body>
+</html>

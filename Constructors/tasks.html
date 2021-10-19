@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do</title>
+    <style>
+      * {
+        font-family: monospace;
+      }
+      #output {
+        width: 1200px;
+        margin: auto;
+
+        margin-top: 100px;
+      }
+      #table {
+        width: 100%;
+      }
+
+      .tr {
+        text-align: center;
+        font-size: 18px;
+        color: blue;
+      }
+      #tr {
+        text-align: center;
+        font-size: 18px;
+        color: green;
+      }
+      #input {
+        border: 1px solid teal;
+        background-color: teal;
+        color: white;
+        width: 500px;
+        height: 30px;
+        font-size: 20px;
+        font-family: monospace;
+        text-align: center;
+        margin-left: 400px;
+        margin-top: 40px;
+      }
+      ::placeholder {
+        color: white;
+      }
+      #btn {
+        height: 30px;
+        font-size: 20px;
+        font-family: monospace;
+        color: white;
+        background-color: crimson;
+        border: none;
+      }
+      #input:hover {
+        background-color: #34568b;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="inp">
+      <input type="text" placeholder="Add your task" id="input" />
+      <button onclick="taskCreate()" id="btn">Add Task</button>
+      <div id="output">
+        <table id="table" border="2">
+          <tr id="tr">
+            <td>Name</td>
+            <td>Date</td>
+            <td class="td">Status</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script>
+      var div = document.getElementById("div");
+      var table = document.getElementById("table");
+
+      function person(task, date, status) {
+        this.task = task;
+        this.date = date;
+        this.status = false;
+      }
+      function taskCreate() {
+        var input = document.getElementById("input");
+
+        var tasks = new person(input.value, new Date());
+        var tr = document.createElement("tr");
+        tr.setAttribute("class", "tr");
+
+        var td1 = document.createElement("td");
+        td1.append(tasks.task);
+        tr.appendChild(td1);
+        var td2 = document.createElement("td");
+        td2.append(tasks.date);
+        tr.appendChild(td2);
+        var td3 = document.createElement("td");
+        td3.innerHTML = tasks.status;
+        td3.setAttribute("class", "td");
+        i++;
+
+        tr.appendChild(td3);
+        table.appendChild(tr);
+
+        input.value = "";
+
+        var td = document.getElementsByClassName("td");
+        var i;
+        for (i = 1; i < td.length; i++) {
+          td[i].onclick = function toggleTask() {
+            var div = this.innerHTML;
+            if (div == "false") {
+              this.innerHTML = true;
+            } else this.innerHTML = false;
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

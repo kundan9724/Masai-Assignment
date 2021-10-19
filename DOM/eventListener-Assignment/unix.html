@@ -1,0 +1,195 @@
+<!-- https://masai-course.s3.ap-south-1.amazonaws.com/resources/images/khan.jpg-->
+<!-- https://masai-course.s3.ap-south-1.amazonaws.com/resources/images/khan.jpg -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Unix</title>
+    <style>
+      #box1 {
+        width: 400px;
+        height: 320px;
+        background-color: rgb(227, 218, 219);
+        margin: auto;
+      }
+      #linusImg {
+        width: 100px;
+        height: 150px;
+        padding-left: 150px;
+        padding-top: 30px;
+      }
+      #linus {
+        margin-left: 95px;
+        color: rgb(2, 2, 127);
+      }
+      h3 {
+        margin-left: 65px;
+        font-size: 25px;
+        margin-top: auto;
+      }
+      #img {
+        width: 100px;
+        height: 150px;
+        float: left;
+        margin-right: 20px;
+      }
+
+      #salKhan {
+        width: 100px;
+        height: 150px;
+      }
+      #box2 {
+        margin: auto;
+        width: 800px;
+        height: 150px;
+        margin-top: 60px;
+        margin-left: 420px;
+      }
+      #text {
+        float: left;
+
+        width: 600px;
+      }
+      p {
+        font-size: 21px;
+      }
+      h1 {
+        color: rgb(215, 20, 20);
+      }
+      #box3 {
+        background-color: rgb(211, 85, 0);
+        height: 150px;
+        width: 1200px;
+        margin: auto;
+        margin-top: 50px;
+      }
+      #left {
+        height: 150px;
+        width: 320px;
+        float: left;
+      }
+      #black {
+        background-color: black;
+        width: 6px;
+        height: 110px;
+        margin-top: 10px;
+        padding-bottom: 10px;
+        float: left;
+        margin-left: 300px;
+      }
+      #right {
+        height: 150px;
+        width: 400px;
+        float: right;
+      }
+      #ken {
+        padding-top: 5px;
+        padding-left: 40px;
+        /* margin-bottom: -10px; */
+        color: white;
+      }
+      #dennis {
+        margin-left: 200px;
+        margin-bottom: 50px;
+        color: white;
+      }
+      #kenInfo {
+        margin-left: 40px;
+      }
+      button {
+        color: white;
+        background-color: teal;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Create Page</button>
+
+    <script>
+      var body = document.getElementsByTagName("body")[0];
+      var btn = document.getElementsByTagName("button")[0];
+      btn.onclick = function () {
+        //div1
+        var div1 = document.createElement("div");
+        var divh1 = document.createElement("h1");
+        divh1.innerHTML = "Linus Torvalds";
+
+        var divh3 = document.createElement("h3");
+        divh3.innerHTML = "The creator of Linux & Git";
+        div1.setAttribute("id", "box1");
+        var img1 = document.createElement("img");
+        img1.setAttribute(
+          "src",
+          "https://masai-course.s3.ap-south-1.amazonaws.com/resources/images/linus.jpg"
+        );
+        img1.setAttribute("id", "linusImg");
+        div1.appendChild(img1);
+        div1.appendChild(divh1);
+        div1.appendChild(divh3);
+        divh1.setAttribute("id", "linus");
+
+        document.body.appendChild(div1);
+        //
+
+        //div2
+        var div2 = document.createElement("div");
+        var div21 = document.createElement("div");
+        var img2 = document.createElement("img");
+        img2.setAttribute(
+          "src",
+          "https://masai-course.s3.ap-south-1.amazonaws.com/resources/images/khan.jpg"
+        );
+        img2.setAttribute("id", "salKhan");
+        div21.setAttribute("id", "img");
+        div2.setAttribute("id", "box2");
+        div21.appendChild(img2);
+        div2.appendChild(div21);
+
+        var div22 = document.createElement("div");
+        div22.setAttribute("id", "text");
+        var div2h1 = document.createElement("h1");
+        div2h1.innerHTML = "Sal Khan";
+        div2p = document.createElement("p");
+        div2p.innerHTML =
+          "Salman Khan is the founder of the khan Academy which has a mission of providing a free world-class education for anyone ,anywhere.";
+        div22.appendChild(div2h1);
+        div22.appendChild(div2p);
+        div2.appendChild(div22);
+        document.body.appendChild(div2);
+
+        //   div3
+        var div3 = document.createElement("div");
+        var div31 = document.createElement("div");
+        div3.setAttribute("id", "box3");
+        div31.setAttribute("id", "left");
+        div3h1 = document.createElement("h1");
+        div3h1.setAttribute("id", "ken");
+        div3h1.innerHTML = "Ken Thompson";
+        div3p = document.createElement("p");
+        div3p.setAttribute("id", "kenInfo");
+        div3p.innerHTML =
+          " Designed and implemented the original Unix operating system";
+        div31.appendChild(div3h1);
+        div31.appendChild(div3p);
+        div3.appendChild(div31);
+
+        var div32 = document.createElement("div");
+        div32.setAttribute("id", "black");
+        div3.appendChild(div32);
+        var div33 = document.createElement("div");
+        div33.setAttribute("id", "right");
+        var div3h2 = document.createElement("h2");
+        div3h2.innerHTML = "Dennis Ritchie";
+        div3h2.setAttribute("id", "dennis");
+        div3p2 = document.createElement("p");
+        div3p2.innerHTML = "The creator of C programming Language";
+        div33.appendChild(div3h2);
+        div33.appendChild(div3p2);
+        div3.appendChild(div33);
+
+        document.body.appendChild(div3);
+        //
+      };
+    </script>
+  </body>
+</html>

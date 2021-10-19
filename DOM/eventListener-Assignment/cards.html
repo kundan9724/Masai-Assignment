@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cards</title>
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        width: 1000px;
+        margin-top: 200px;
+        margin: auto;
+        margin-top: 100px;
+      }
+      .cards {
+        height: 100px;
+        width: 200px;
+        background-color: teal;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        text-align: center;
+        color: white;
+      }
+      .btn2 {
+        margin-top: 10px;
+        height: 30px;
+        padding: top 30px;
+        width: 120px;
+        float: right;
+      }
+
+      @media screen and (max-width: 500px) {
+        .grid {
+          grid-template-columns: 300px;
+          grid-template-rows: repeat(10, 100px);
+          gap: 20px;
+        }
+        .cards {
+          width: 400px;
+          /* margin: auto; */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="five cards">Add 5 Cards</button>
+  </body>
+  <script>
+    var i = 0;
+    let num = i;
+    var btn = document.getElementById("five cards");
+    var div = document.createElement("div");
+    div.setAttribute("class", "grid");
+
+    btn.onclick = function () {
+      for (var i = num; i < num + 5; i++) {
+        var cards = document.createElement("div");
+        var btn2 = document.createElement("button");
+        btn2.setAttribute("class", "btn2");
+        btn2.innerHTML = "click";
+        cards.innerHTML = i + 1;
+        cards.setAttribute("class", "cards");
+        cards.appendChild(btn2);
+        div.appendChild(cards);
+        cards.setAttribute("id", "cards" + i);
+      }
+      document.body.appendChild(div);
+
+      num = i;
+    };
+    var h1 = document.createElement("h1");
+    var btnNew = document.getElementsByClassName("btn2");
+    console.log(btnNew);
+
+    for (var i = 0; i < btnNew.length; i++) {
+      btnNew[i].onclick = function () {
+        console.log(main);
+      };
+      document.body.appendChild(h1);
+    }
+  </script>
+</html>
